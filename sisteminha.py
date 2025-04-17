@@ -8,6 +8,8 @@ st.title("📊 Relatório Interativo de Reprovações")
 df = pd.read_csv("trypa5.csv", sep=",")
 reprovados = df[df["Situacao"] == "Reprovacao"]
 
+st.markdown("### 📌 Filtros interativos")
+
 # Filtro por curso
 cursos_disponiveis = sorted(reprovados["Curso"].dropna().unique())
 curso_selecionado = st.selectbox("🎓 Filtrar por curso", ["Todos"] + cursos_disponiveis)
@@ -21,7 +23,7 @@ semestre_selecionado = st.selectbox("📆 Filtrar por semestre", ["Todos"] + sem
 if semestre_selecionado != "Todos":
     reprovados = reprovados[reprovados["Semestre"] == semestre_selecionado]
 
-st.markdown("### 📌 Filtros interativos")
+
 
 col1, col2 = st.columns(2)
 
