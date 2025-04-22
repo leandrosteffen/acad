@@ -13,6 +13,8 @@ import os
 import pandas as pd
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+import shutil
+from datetime import datetime
 
 
 # In[89]:
@@ -127,19 +129,36 @@ botao_xls.click()
 # In[95]:
 
 
-time.sleep(60)
+#time.sleep(60)
 
 caminho_xls = r"C:\Users\laasm\Desktop\acad\relatorio_retidos.xls"
-
-# Caminho do novo CSV
-#caminho_csv = caminho_xls.replace(".xls", ".csv")
-
 caminho_csv = r"C:\Users\laasm\Desktop\acad\trypa5.csv"
+
+# Remove o .xls antigo se existir
+if os.path.exists(caminho_xls):
+    os.remove(caminho_xls)
+    print("Arquivo .xls antigo removido.")
+
+# Aguarda até o novo .xls ser baixado
+print("Aguardando o download do novo .xls...")
+timeout = 120  # segundos
+inicio = time.time()
+while not os.path.exists(caminho_xls):
+    if time.time() - inicio > timeout:
+        raise TimeoutError("Tempo excedido aguardando o download do arquivo .xls.")
+    time.sleep(1)
+
+# Converte o .xls para DataFrame
 tabelas = pd.read_html(caminho_xls)
-df = tabelas[0]  # geralmente a primeira tabela é a que queremos
+df = tabelas[0]
 
-# Salva como CSV
+# Salva o CSV mais recente (sobrescreve trypa5.csv)
 df.to_csv(caminho_csv, index=False)
+print(f"Arquivo principal atualizado: {caminho_csv}")
 
-print(f"Convertido com sucesso para: {caminho_csv}")
+# Cria uma cópia com timestamp como backup
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+caminho_backup = fr"C:\Users\laasm\Desktop\acad\backup_trypa5_{timestamp}.csv"
+shutil.copy(caminho_csv, caminho_backup)
+print(f"Backup salvo em: {caminho_backup}")
 
