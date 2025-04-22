@@ -35,7 +35,7 @@ with col1:
 
     if aluno_escolhido:
         dados_aluno = reprovados[reprovados["Estudante"] == aluno_escolhido][
-            ["Semestre", "Unidade Curricular Pendente", "Situacao"]
+            ["Curso", "Semestre", "Unidade Curricular Pendente", "Situacao"]
         ]
         st.write(f"Reprovações de **{aluno_escolhido}**:")
         st.dataframe(dados_aluno)
@@ -49,7 +49,7 @@ with col2:
     if disciplina_escolhida:
         dados_disciplina = reprovados[
             reprovados["Unidade Curricular Pendente"] == disciplina_escolhida
-        ][["Estudante", "Semestre", "Situacao"]]
+        ][["Curso","Estudante", "Semestre", "Situacao"]]
         st.write(f"Alunos reprovados em **{disciplina_escolhida}**:")
         st.dataframe(dados_disciplina)
 
