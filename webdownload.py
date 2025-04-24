@@ -71,8 +71,8 @@ senha = driver.find_element(By.ID, "UsuarioSenha")
 #botao_login = driver.find_element(By.Value, "Entrar")
 botao_login= driver.find_element(By.XPATH,'//*[@value="Entrar"]')
 
-usuario.send_keys("leandro.steffen")
-senha.send_keys("Speed@marela01")
+usuario.send_keys("AAAAA")
+senha.send_keys("AAAAA")
 botao_login.click()
 
 
