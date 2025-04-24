@@ -15,6 +15,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import shutil
 from datetime import datetime
+from dotenv import load_dotenv
 
 
 # In[89]:
@@ -71,8 +72,14 @@ senha = driver.find_element(By.ID, "UsuarioSenha")
 #botao_login = driver.find_element(By.Value, "Entrar")
 botao_login= driver.find_element(By.XPATH,'//*[@value="Entrar"]')
 
-usuario.send_keys("AAAAA")
-senha.send_keys("AAAAA")
+load_dotenv()
+
+usuario_login = os.getenv("USUARIO_LOGIN")
+usuario_senha = os.getenv("USUARIO_SENHA")
+
+
+usuario.send_keys(usuario_login)
+senha.send_keys(usuario_senha)
 botao_login.click()
 
 
