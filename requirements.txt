@@ -1,0 +1,6 @@
+stremlit
+pandas
+selenium
+webdriver_manager
+atetime
+dotenv
