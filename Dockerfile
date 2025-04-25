@@ -16,4 +16,5 @@ COPY . .
 ENV CHROME_BIN=/usr/bin/chromium
 ENV PATH="/usr/lib/chromium:$PATH"
 
-CMD ["bash", "-c", "python webdownload.py && streamlit run sisteminha.py --server.port 80 --server.enableCORS false"]
+#CMD ["bash", "-c", "python webdownload.py && streamlit run sisteminha.py --server.port 80 --server.enableCORS false"]
+CMD ["bash", "-c", "python webdownload.py && streamlit run sisteminha.py --server.port 80 --server.address 0.0.0.0 --server.enableCORS true --server.enableXsrfProtection false --server.headless true"]
