@@ -1,6 +1,6 @@
-stremlit
+streamlit
 pandas
 selenium
 webdriver_manager
-atetime
+datetime
 dotenv
