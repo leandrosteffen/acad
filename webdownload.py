@@ -16,6 +16,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import shutil
 from datetime import datetime
 from dotenv import load_dotenv
+from selenium.webdriver.chrome.service import Service
 
 
 # In[89]:
@@ -46,7 +47,10 @@ chrome_options.add_argument("--disable-gpu")  # Recomendado para evitar bugs em 
 chrome_options.add_argument("--no-sandbox")  # Útil em ambientes Linux
 # Inicia o Chrome com as opções configuradas
 #driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=chrome_options)
+#driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=chrome_options)
+
+service = Service('/usr/bin/chromedriver')
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # In[90]:
 
