@@ -5,6 +5,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     wget unzip curl gnupg \
     chromium-driver chromium \
+    libxml2-dev libxslt1-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt ./
