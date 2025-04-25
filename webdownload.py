@@ -63,7 +63,7 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 # In[91]:
 
 
-driver = webdriver.Chrome(options=chrome_options)
+#driver = webdriver.Chrome(options=chrome_options)
 
 
 # In[92]:
