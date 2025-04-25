@@ -45,8 +45,8 @@ chrome_options.add_argument("--window-size=1920,1080")  # Evita problemas com re
 chrome_options.add_argument("--disable-gpu")  # Recomendado para evitar bugs em alguns sistemas
 chrome_options.add_argument("--no-sandbox")  # Útil em ambientes Linux
 # Inicia o Chrome com as opções configuradas
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-
+#driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=chrome_options)
 
 # In[90]:
 
