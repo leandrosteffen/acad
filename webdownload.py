@@ -21,7 +21,15 @@ from dotenv import load_dotenv
 # In[89]:
 
 
-download_dir = r"C:\Users\laasm\Desktop\acad"
+download_dir = os.path.join(os.getcwd(), "downloads")
+os.makedirs(download_dir, exist_ok=True)
+
+chrome_options.add_experimental_option("prefs", {
+    "download.default_directory": download_dir,
+    "download.prompt_for_download": False,
+    "download.directory_upgrade": True,
+    "safebrowsing.enabled": True
+})
 
 # Configurações do Chrome
 chrome_options = Options()
@@ -138,8 +146,8 @@ botao_xls.click()
 
 #time.sleep(60)
 
-caminho_xls = r"C:\Users\laasm\Desktop\acad\relatorio_retidos.xls"
-caminho_csv = r"C:\Users\laasm\Desktop\acad\trypa5.csv"
+caminho_xls = os.path.join(download_dir, "relatorio_retidos.xls")
+caminho_csv = os.path.join(os.getcwd(), "trypa5.csv")
 
 # Remove o .xls antigo se existir
 if os.path.exists(caminho_xls):
@@ -165,7 +173,5 @@ print(f"Arquivo principal atualizado: {caminho_csv}")
 
 # Cria uma cópia com timestamp como backup
 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-caminho_backup = fr"C:\Users\laasm\Desktop\acad\backup_trypa5_{timestamp}.csv"
+caminho_backup = os.path.join(download_dir, f"backup_trypa5_{timestamp}.csv")
 shutil.copy(caminho_csv, caminho_backup)
-print(f"Backup salvo em: {caminho_backup}")
-
