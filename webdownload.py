@@ -84,10 +84,10 @@ senha = driver.find_element(By.ID, "UsuarioSenha")
 #botao_login = driver.find_element(By.Value, "Entrar")
 botao_login= driver.find_element(By.XPATH,'//*[@value="Entrar"]')
 
-load_dotenv()
+#load_dotenv()
 
-usuario_login = os.getenv("USUARIO_LOGIN")
-usuario_senha = os.getenv("USUARIO_SENHA")
+usuario_login = os.environ["USUARIO_LOGIN"]
+usuario_senha = os.environ["USUARIO_SENHA"]
 
 
 usuario.send_keys(usuario_login)
@@ -179,4 +179,3 @@ print(f"Arquivo principal atualizado: {caminho_csv}")
 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 caminho_backup = os.path.join(download_dir, f"backup_trypa5_{timestamp}.csv")
 shutil.copy(caminho_csv, caminho_backup)
-

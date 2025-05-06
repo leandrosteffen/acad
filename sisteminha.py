@@ -24,7 +24,6 @@ if semestre_selecionado != "Todos":
     reprovados = reprovados[reprovados["Semestre"] == semestre_selecionado]
 
 
-
 col1, col2 = st.columns(2)
 
 # 🔍 Por aluno
